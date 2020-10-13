@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta char="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" type="text/css" href="static/normalize.css">
+    <script src="static/vue.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-93111170-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'UA-93111170-2');
+      
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <div id="main">
+        <div id="bottom">
+          <ul id="selection">
+            <li v-for="(choice, index) in choices" :data-state="choice.state">
+              <p>{{ choice.name }}</p>
+              <div class="input-wrapper" @click="select(index, choice.state)">
+                <div class="checkbox-wrapper">
+                  <div class="bg">
+                    <div class="ball"></div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button id="guidebutton" @click="displayGuide" :class="{active: guidestate}"></button>
+      <div id="guide" :class="{active: guidestate}">
+        <h2>instructions</h2>
+        <p>just put in your attributes seperated with "&" after our URL and you're ready to send the link to your friend!<br><span>(* max 3 attributes)</span></p>
+        <p class="link">http://youcanthaveitall.tech/?girlfriend&wife&sidechick</p>
+        <p>* add "&msg=true" at the end to hide insensitive popup</p>
+        <p class="link">http://youcanthaveitall.tech/?girlfriend&wife&sidechick&msg=true</p>
+        <p>* use % as "spaces"</p>
+        <p class="link">http://youcanthaveitall.tech/?dig%bick&unibrow&double%D&msg=true</p>
+        <button id="exitguide" @click="exitGuide"></button>
+      </div>
+      <div id="overlay" v-if="messagestate">
+        <h2>seems like you're being a prick, and being full of yourself, hope this will bring you back to your senses</h2>
+      </div>
+    </div>
+    <footer>
+      <p>calvinxhen@gmail.com | <a href="http://calvinong.tech">calvinong.tech</a> | <a href="https://github.com/owx940810">github</a></p>
+    </footer>
+    <script src="js/index.js"></script>
+  </body>
+</html>
