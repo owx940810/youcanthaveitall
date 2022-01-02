@@ -35,7 +35,7 @@ window.APP = new window.Vue({
         }
 
         this.choices.push({
-          name: item.replace('%', ' '),
+          name: item.replaceAll('%', ' '),
           state: false
         })
       })
